@@ -56,10 +56,12 @@ interface PictureOfDayService {
     suspend fun getPicutureOfDay(@Query("api_key") apiKey: String): String
 }
 
-val asteroidService: AsteroidService by lazy {
-    scalarRetrofit.create(AsteroidService::class.java)
-}
+object Network {
+    val asteroidService: AsteroidService by lazy {
+        scalarRetrofit.create(AsteroidService::class.java)
+    }
 
-val pictureOfDayService: PictureOfDayService by lazy {
-    moshiRetrofit.create(PictureOfDayService::class.java)
+    val pictureOfDayService: PictureOfDayService by lazy {
+        moshiRetrofit.create(PictureOfDayService::class.java)
+    }
 }

@@ -46,7 +46,7 @@ private val scalarRetrofit = Retrofit.Builder()
 
 //https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=DEMO_KEY
 interface AsteroidService {
-    @GET("neo/rest/feed")
+    @GET("neo/rest/v1/feed")
     suspend fun getAsteroids(@Query("api_key") apiKey: String): String
 }
 

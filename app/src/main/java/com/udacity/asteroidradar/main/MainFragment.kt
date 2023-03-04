@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
 
@@ -29,7 +30,7 @@ class MainFragment : Fragment() {
         setHasOptionsMenu(true)
 
         binding.asteroidRecycler.adapter = AsteroidAdapter {
-            // TODO Navigate to details screen.
+            findNavController().navigate(MainFragmentDirections.actionShowDetail(it))
         }
 
         return binding.root

@@ -1,6 +1,7 @@
 package com.udacity.asteroidradar
 
 import com.udacity.asteroidradar.database.DatabaseAsteroid
+import com.udacity.asteroidradar.model.Asteroid
 
 fun Asteroid.asDatabaseModel() = DatabaseAsteroid(
     id = id,

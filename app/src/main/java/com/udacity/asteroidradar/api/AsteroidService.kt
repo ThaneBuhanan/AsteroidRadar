@@ -20,6 +20,7 @@ package com.udacity.asteroidradar.api
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.udacity.asteroidradar.model.PictureOfDay
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
@@ -53,7 +54,7 @@ interface AsteroidService {
 //https://api.nasa.gov/planetary/apod?api_key=YOUR_API_KEY
 interface PictureOfDayService {
     @GET("planetary/apod")
-    suspend fun getPicutureOfDay(@Query("api_key") apiKey: String): String
+    suspend fun getPicutureOfDay(@Query("api_key") apiKey: String): PictureOfDay
 }
 
 object Network {

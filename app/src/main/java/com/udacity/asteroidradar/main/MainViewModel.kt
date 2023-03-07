@@ -23,8 +23,13 @@ class MainViewModel(
 
     init {
         viewModelScope.launch {
-            asteroidRepository.saveAsteroids(BuildConfig.API_KEY)
-            _pictureOfDay.value = Network.pictureOfDayService.getPicutureOfDay(BuildConfig.API_KEY)
+            try {
+                asteroidRepository.saveAsteroids(BuildConfig.API_KEY)
+                _pictureOfDay.value =
+                    Network.pictureOfDayService.getPicutureOfDay(BuildConfig.API_KEY)
+            } catch (ex: Exception) {
+
+            }
         }
     }
 

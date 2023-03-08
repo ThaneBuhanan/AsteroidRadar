@@ -10,6 +10,10 @@ import com.udacity.asteroidradar.database.getDatabase
 import com.udacity.asteroidradar.model.PictureOfDay
 import kotlinx.coroutines.launch
 
+enum class AsteroidFilter {
+    TODAY, ALL_SAVED, WEEK
+}
+
 class MainViewModel(
     application: Application
 ) : ViewModel() {
@@ -25,12 +29,17 @@ class MainViewModel(
         viewModelScope.launch {
             try {
                 asteroidRepository.saveAsteroids(BuildConfig.API_KEY)
+                asteroidRepository.setFilter(AsteroidFilter.ALL_SAVED)
                 _pictureOfDay.value =
                     Network.pictureOfDayService.getPicutureOfDay(BuildConfig.API_KEY)
             } catch (ex: Exception) {
 
             }
         }
+    }
+
+    fun setFilter(asteroidFilter: AsteroidFilter) {
+        asteroidRepository.setFilter(asteroidFilter)
     }
 
     class Factory(val app: Application) : ViewModelProvider.Factory {
